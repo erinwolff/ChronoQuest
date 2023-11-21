@@ -7,8 +7,11 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import AuthForm from "./features/auth/AuthForm";
-import Tasks from "./features/tasks/Tasks";
 import Root from "./layout/Root.jsx";
+
+import Home from "./features/games/Home.jsx";
+import Profile from "./features/games/Profile.jsx";
+import Details from "./features/games/Details.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
@@ -16,8 +19,9 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
-      { path: "/", element: <Tasks /> },
-      { path: "/tasks", element: <Tasks /> },
+      { path: "/", element: <Home /> },
+      { path: "/profile", element: <Profile /> },
+      { path: "/details", element: <Details /> },
       { path: "/login", element: <AuthForm /> },
     ],
   },
