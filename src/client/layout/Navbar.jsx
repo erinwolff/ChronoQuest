@@ -21,17 +21,17 @@ export default function Navbar() {
 
   return (
     <nav className="top">
-      <h1>Task Tracker</h1>
+      <h1>ChronoQuest</h1>
       <menu>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
         {token ? (
           <li>
+            <NavLink to="/home">Home</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
             <a onClick={handleLogout}>Log Out</a>
           </li>
         ) : (
           <li>
+            <NavLink to="/home">Home</NavLink>
             <NavLink to="/login">Log In</NavLink>
           </li>
         )}
