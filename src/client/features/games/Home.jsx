@@ -16,7 +16,7 @@ export const GameCard = ({ game }) => {
               <br />
               {game.time}
               <br />
-              <Link to={`/details`}> Review </Link>
+              <Link to={`/details/${game.id}`}> Review </Link>
             </p>
           </li>
         </section>
