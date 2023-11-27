@@ -6,6 +6,10 @@ const gamesApi = api.injectEndpoints({
       query: () => "/profile",
       providesTags: ["Games"],
     }),
+    getGameById: builder.query({
+      query: (id) => `/details/${id}`,
+      method: "GET",
+    }),
     createGame: builder.mutation({
       query: (gameTitle, gameTime, gameImage, gameReview) => ({
         url: "/profile",
@@ -30,7 +34,8 @@ const gamesApi = api.injectEndpoints({
 
 export const {
   useGetUserGamesQuery,
+  useGetGameByIdQuery,
   useCreateGameMutation,
   useDeleteGameMutation,
-  useGetAllGamesQuery,
+  useGetAllGamesQuery
 } = gamesApi
