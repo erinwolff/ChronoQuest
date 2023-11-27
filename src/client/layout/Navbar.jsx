@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logout, selectToken } from "../features/auth/authSlice";
+import clockLogo from "../assets/clock.gif"
 
 import "./Navbar.less";
 
@@ -21,7 +22,7 @@ export default function Navbar() {
 
   return (
     <nav className="top">
-      <h1>ChronoQuest</h1>
+      <img src={clockLogo}/><h1>ChronoQuest</h1>
       <menu>
         {token ? (
           <li>
