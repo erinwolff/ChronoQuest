@@ -78,7 +78,7 @@ export default function AuthForm() {
         <br/>
         Make posts on the forum to start a conversation.
         <br/>
-        All at no cost :)</h6>
+        All at no cost &#128516;</h6>
 
       {(loginLoading || registerLoading) && <p>Please wait...</p>}
       {loginError && <p role="alert">{loginError}</p>}
