@@ -1,5 +1,7 @@
 import { useGetGameByIdQuery, useDeleteGameMutation } from "./gameSlice";
 import { useParams, useNavigate } from "react-router-dom"
+import { selectToken } from "../auth/authSlice"
+import { useSelector } from "react-redux";
 
 
 export default function Details() {
@@ -12,12 +14,17 @@ export default function Details() {
 
   // Handle delete function
   const navigate = useNavigate();
+  const token = useSelector(selectToken);
   const [deleteGame] = useDeleteGameMutation();
   const handleDelete = () => {
-    deleteGame(game.id);
-    navigate("/profile");
+    if (!token) {
+      window.alert("You must be logged in to delete your game post!");
+    } else {
+      deleteGame(game.id);
+      navigate("/profile");
+    }
   }
- 
+
   return isLoading ? (
     <p>Loading...</p>
   ) : (game && (
@@ -32,7 +39,7 @@ export default function Details() {
         <br />
         {playtime}
         <br />
-        <br/>
+        <br />
         <h4>{username}'s Review:</h4>
         <br />
         {review}
