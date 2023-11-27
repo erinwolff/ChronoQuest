@@ -11,6 +11,7 @@ const authApi = api.injectEndpoints({
         body: credentials,
       }),
       transformErrorResponse: (response) => response.data,
+      invalidatesTags: ["Games"],
     }),
     login: builder.mutation({
       query: (credentials) => ({
@@ -19,6 +20,7 @@ const authApi = api.injectEndpoints({
         body: credentials,
       }),
       transformErrorResponse: (response) => response.data,
+      invalidatesTags: ["Games"],
     }),
   }),
 });
