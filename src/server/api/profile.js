@@ -10,8 +10,12 @@ router.get("/", async (req, res, next) => {
     const games = await prisma.game.findMany({
       where: { userId: res.locals.user.id },
     });
+    const user = await prisma.user.findUnique({
+      where: {id: res.locals.user.id},
+    });
     const responseData = {
-      games: games
+      games: games,
+      username: user.username,
     };
     res.json(responseData);
   } catch (err) {
