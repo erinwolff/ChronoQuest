@@ -2,7 +2,7 @@ import { useGetAllGamesQuery } from "./gameSlice";
 import {Link} from 'react-router-dom'
 
 
-export const HomeCard = ({ game }) => {
+export const GameCard = ({ game }) => {
   return (
     <>
       <ul className="game-card">
@@ -35,7 +35,7 @@ export default function Home() {
       {games && (
         <ul>
           {games.map((game) => (
-            <HomeCard key={game.id} game={game} />
+            <GameCard key={game.id} game={game} />
           ))}
         </ul>
       )}
