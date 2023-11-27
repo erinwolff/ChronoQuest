@@ -66,6 +66,19 @@ export default function AuthForm() {
         <button>{authAction}</button>
       </form>
       <a onClick={() => setIsLogin(!isLogin)}>{altCopy}</a>
+      <br/>
+      <br/>
+      <h5>What is included in a membership?</h5>
+      <br/>
+      <h6>
+        Share your playtime data with the world.
+        <br/>
+
+        Write reviews for those games you love (or hate).
+        <br/>
+        Make posts on the forum to start a conversation.
+        <br/>
+        All at no cost :)</h6>
 
       {(loginLoading || registerLoading) && <p>Please wait...</p>}
       {loginError && <p role="alert">{loginError}</p>}
