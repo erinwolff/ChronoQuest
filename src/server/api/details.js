@@ -4,22 +4,29 @@ const prisma = require("../prisma");
 const router = require("express").Router();
 module.exports = router;
 
-// GETs a game post specified by the gameId
+// GETs a game post & username specified by the gameId
 router.get('/:id', async (req, res, next) => {
   try {
     const id = +req.params.id
-    const result = await prisma.game.findUnique({
+    const game = await prisma.game.findUnique({
       where: {
         id: id,
       },
     });
-    if (!result) {
+    const user = await prisma.user.findUnique({
+      where: { id: game.userId },
+    });
+    if (!game) {
       return next({
         status: 404,
-        message: `Could not find post with id ${id}.`
+        message: `Could not find game with id ${id}.`
       });
     }
-    res.json(result)
+    const responseData = {
+      game: game,
+      username: user.username,
+    };
+    res.json(responseData)
   } catch (err) {
     next(err);
   }
