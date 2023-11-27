@@ -57,7 +57,7 @@ export const GameForm = () => {
           value={gameTime}
           onChange={(e) => setGameTime(e.target.value)}
         />
-        <input 
+        <input
           type="text"
           placeholder="Image URL"
           value={gameImage}
@@ -87,11 +87,26 @@ export default function Profile() {
     return <p>You must be logged in to view your profile.</p>
   }
 
+  const [filteredGame, setFilteredGame] = useState("");
+  const filteredGames = games?.filter((g) => (g.title.toLowerCase().includes(filteredGame.toLowerCase()) || g.time.toLowerCase().includes(filteredGame.toLowerCase())));
+
+
   return (
     <>
+      <div className="search-bar">
+        <input type="text" value={filteredGame} onChange={(e) => setFilteredGame(e.target.value)} placeholder="Search" />
+      </div>
       <h1>{username}'s Games</h1>
       <br />
-      {games && (
+      {isLoading && <p>Loading games...</p>}
+      {filteredGame ? (
+        <ul className="search">{
+          filteredGames?.map((game) => (
+            <GamesCard key={game.id} game={game} />
+          ))
+        }
+        </ul>
+      ) : (
         <ul>
           {games?.map((game) => (
             <GamesCard key={game.id} game={game} />
