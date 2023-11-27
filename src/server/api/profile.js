@@ -34,7 +34,7 @@ router.post("/", async (req, res, next) => {
       data: {
         title: gameTitle, time: gameTime, imageUrl: gameImage, review: gameReview,
         user: {
-          connct: { id: res.locals.user.id }
+          connect: { id: res.locals.user.id }
         }
       },
     });
