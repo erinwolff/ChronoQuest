@@ -1,4 +1,5 @@
 import { useGetAllGamesQuery } from "./gameSlice";
+import {Link} from 'react-router-dom'
 
 
 export const HomeCard = ({ game }) => {
@@ -14,6 +15,7 @@ export const HomeCard = ({ game }) => {
               <br/>
               {game.time}
               <br/>
+              <Link to={`/details`}> Review </Link>
             </p>
           </li>
         </section>
@@ -28,7 +30,7 @@ export default function Home() {
 
   return (
     <div className="games">
-      <h1>See what the world is playing:</h1>
+      <p>See what the world is playing:</p>
       {isLoading && <p>Loading games...</p>}
       {games && (
         <ul>
