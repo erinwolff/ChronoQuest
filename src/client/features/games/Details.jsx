@@ -16,12 +16,20 @@ export default function Details() {
   const navigate = useNavigate();
   const token = useSelector(selectToken);
   const [deleteGame] = useDeleteGameMutation();
-  const handleDelete = () => {
-    if (!token) {
-      window.alert("You must be logged in to delete your game post!");
-    } else {
-      deleteGame(game.id);
-      navigate("/profile");
+  const handleDelete = async () => {
+    try {
+      if (!token) {
+        window.alert("You must be logged in to delete your game post!");
+      } else {
+        const response = await deleteGame(game.id);
+        if (response.error) {
+          window.alert("You do not have permission to delete this game.");
+        } else {
+          navigate("/profile");
+        }
+      }
+    } catch (err) {
+      console.error("Error deleting game:", err);
     }
   }
 
