@@ -82,44 +82,53 @@ export default function Profile() {
   const { data, isLoading } = useGetUserGamesQuery();
   const games = data?.games || [];
   const username = data?.username || "";
-
-  if (!token) {
-    return <p>You must be logged in to view your profile.</p>
-  }
-
   const [filteredGame, setFilteredGame] = useState("");
   const filteredGames = games?.filter((g) => (g.title.toLowerCase().includes(filteredGame.toLowerCase()) || g.time.toLowerCase().includes(filteredGame.toLowerCase())));
 
 
-  return (
-    <>
-      <div className="search-bar">
-        <input type="text" value={filteredGame} onChange={(e) => setFilteredGame(e.target.value)} placeholder="Search" />
-      </div>
-      <h1>{username}'s Games</h1>
-      <br />
-      {isLoading && <p>Loading games...</p>}
-      {filteredGame ? (
-        <ul className="search">{
-          filteredGames?.map((game) => (
-            <GamesCard key={game.id} game={game} />
-          ))
-        }
-        </ul>
-      ) : (
-        <ul>
-          {games?.map((game) => (
-            <GamesCard key={game.id} game={game} />
-          ))}
-        </ul>
-      )}
-      <br />
-      <br />
-      <h4>Finished a game?</h4>
-      <br />
-      <h4>Add it to the list.</h4>
-      <GameForm />
-    </>
-  );
+  if (!token) {
+    return <p>You must be logged in to view your profile.</p>
+  } else {
+    return (
+      <>
+        <div className="search-bar">
+          <input type="text" value={filteredGame} onChange={(e) => setFilteredGame(e.target.value)} placeholder="Search" />
+        </div>
+        <h1>{username}'s Games</h1>
+        <br />
+        {isLoading && <p>Loading games...</p>}
+        {filteredGame ? (
+          <div>
+            <ul className="search">{
+              filteredGames?.map((game) => (
+                <GamesCard key={game.id} game={game} />
+              ))
+            }
+            </ul>
+            <br />
+            <br />
+            <h4>Finished a game?</h4>
+            <br />
+            <h4>Add it to the list.</h4>
+            <GameForm />
+          </div>
+        ) : (
+          <div>
+            <ul>
+              {games?.map((game) => (
+                <GamesCard key={game.id} game={game} />
+              ))}
+            </ul>
+            <br />
+            <br />
+            <h4>Finished a game?</h4>
+            <br />
+            <h4>Add it to the list.</h4>
+            <GameForm />
+          </div>
+        )}
+      </>
+    );
+  }
 }
 
