@@ -59,9 +59,10 @@ export default function Home() {
           </ul>
         ) : (
           <ul>
-            {games?.map((game) => (
-              <GameCard key={game.id} game={game} />
-            ))}
+            {games?.map((game, index) => (
+              index >= (games.length - 10) && (
+                <GameCard key={game.id} game={game} />
+              )))}
           </ul>
         )}
       </div>
