@@ -1,8 +1,10 @@
-import { useGetUserGamesQuery, useCreateGameMutation } from "./gameSlice";
+import { useGetUserGamesQuery, useCreateGameMutation, useGetAllGamesQuery } from "./gameSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice"
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete"
 
 export const GamesCard = ({ game }) => {
   return (
@@ -27,15 +29,16 @@ export const GamesCard = ({ game }) => {
 }
 
 export const GameForm = () => {
-  const [gameTitle, setGameTitle] = useState("");
+  const [autocompleteValue, setAutocompleteValue] = useState("");
   const [gameTime, setGameTime] = useState("");
   const [gameImage, setGameImage] = useState("");
   const [gameReview, setGameReview] = useState("");
   const [newGame] = useCreateGameMutation();
+  const { data: games, isLoading } = useGetAllGamesQuery();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await newGame({ gameTitle, gameTime, gameImage, gameReview });
+    await newGame({ gameTitle: autocompleteValue, gameTime, gameImage, gameReview });
     setGameTitle("");
     setGameTime("");
     setGameImage("");
@@ -45,12 +48,23 @@ export const GameForm = () => {
   return (
     <>
       <form className="add-game-form" onSubmit={handleSubmit}>
-        <input required
-          type="text"
-          placeholder="Title"
-          value={gameTitle}
-          onChange={(e) => setGameTitle(e.target.value)}
-        />
+        {isLoading ? (
+          <p>Loading games...</p>
+        ) : (
+          <Autocomplete
+            freeSolo
+            options={games?.map((option) => option.title)}
+            value={autocompleteValue}
+            onChange={(e, newValue) => setAutocompleteValue(newValue)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Title"
+                required
+              />
+            )}
+          />
+        )}
         <input required
           type="text"
           placeholder="Time to beat"
