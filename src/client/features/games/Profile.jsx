@@ -57,7 +57,7 @@ export const GameForm = () => {
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Title"
+                label="Search for Game Title. Don't see it? Add a new one."
                 required
               />
             )}
