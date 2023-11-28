@@ -8,23 +8,21 @@ import Autocomplete from "@mui/material/Autocomplete"
 
 export const GamesCard = ({ game }) => {
   return (
-    <>
-      <ul className="game-card">
-        <section>
-          <li className="game">
-            <p className="game-text">
-              {game.title}
-              <br />
-              <img src={game.imageUrl} />
-              <br />
-              {game.time}
-              <br />
-              <Link to={`/details/${game.id}`}> Review </Link>
-            </p>
-          </li>
-        </section>
-      </ul>
-    </>
+    <ul className="game-card">
+      <section>
+        <li className="game">
+          <p className="game-text">
+            {game.title}
+            <br />
+            <img src={game.imageUrl} />
+            <br />
+            {game.time}
+            <br />
+            <Link to={`/details/${game.id}`}> Review </Link>
+          </p>
+        </li>
+      </section>
+    </ul>
   )
 }
 
@@ -39,10 +37,10 @@ export const GameForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await newGame({ gameTitle: autocompleteValue, gameTime, gameImage, gameReview });
-    setGameTitle("");
     setGameTime("");
     setGameImage("");
     setGameReview("");
+    setAutocompleteValue("");
   };
 
   return (
@@ -53,9 +51,9 @@ export const GameForm = () => {
         ) : (
           <Autocomplete
             freeSolo
-            options={games?.map((option) => option.title)}
+            options={[...new Set(games?.map((option) => option.title))]}
             value={autocompleteValue}
-            onChange={(e, newValue) => setAutocompleteValue(newValue)}
+            onInputChange={(event, newInputValue) => setAutocompleteValue(newInputValue)}
             renderInput={(params) => (
               <TextField
                 {...params}
