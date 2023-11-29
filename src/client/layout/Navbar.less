@@ -18,13 +18,13 @@ nav.top {
   border-bottom: 1px solid #000000;
   margin: 0 auto;
 
-
   a {
     color: @link-color;
     margin: 0 1em;
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
+    white-space: nowrap; 
 
     &:hover {
       color: @link-color-hover;
@@ -40,11 +40,24 @@ nav.top {
 
   menu {
     display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
     gap: 1ch;
   }
 
   .clockLogo {
     padding: 1%;
     width: 75px;
+  }
+
+  @media (max-width: 600px) {
+    
+    a {
+      margin: 0.5em;
+    }
+
+    .clockLogo {
+      width: 50px;
+    }
   }
 }

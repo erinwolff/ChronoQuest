@@ -44,17 +44,21 @@ a {
 .game-card {
   border: 1px solid black;
   display: flex;
-  flex-flow: column nowrap;
+  flex-direction: column; 
   justify-content: space-evenly;
   align-items: center;
-  align-content: center;
   padding: 1em;
   margin: 1em auto;
   background-color: white;
   flex-shrink: 0;
   max-width: 300px;
   max-height: 500px;
+
+  @media (max-width: 1200px) {
+    max-width: 100%;
+  }
 }
+
 
 .game-text {
   display: flex;
@@ -69,17 +73,18 @@ a {
 
 .gamecard-container {
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  align-items: center;
-  align-content: space-evenly;
-  gap: 40px 20px;
+  gap: 20px; 
   width: 100%;
-  border-radius: 3%;
-  flex-shrink: 0;
-  max-width: 1500px;
-  max-height: 2000px;
   margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    justify-content: center;
+  }
+  @media (max-width: 500px) {
+    min-width: 100%; 
+  }
 }
 
 .search {
@@ -107,6 +112,7 @@ a {
   flex-wrap: wrap;
   border-radius: 3%;
   margin-top: 0;
+  min-width: 200px;
 }
 
 h1 {
@@ -129,3 +135,6 @@ h6 {
   margin-top: 90px;
 }
 
+.games {
+  margin: 0 auto;
+}
