@@ -37,7 +37,7 @@ export default function Home() {
   return (
     <>
       <div className="search-bar">
-        <input type="text" value={filteredGame} onChange={(e) => setFilteredGame(e.target.value)} placeholder="Search" />
+        <input type="text" value={filteredGame} onChange={(e) => setFilteredGame(e.target.value)} placeholder="Looking for a game?" />
       </div>
 
       <div className="games">
