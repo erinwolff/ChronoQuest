@@ -42,7 +42,7 @@ export default function AuthForm() {
   };
 
   return (
-    <>
+    <div className="authForm">
       <h1>{authAction}</h1>
       <form onSubmit={attemptAuth}>
         <label>
@@ -83,6 +83,6 @@ export default function AuthForm() {
       {(loginLoading || registerLoading) && <p>Please wait...</p>}
       {loginError && <p role="alert">{loginError}</p>}
       {registerError && <p role="alert">{registerError}</p>}
-    </>
+    </div>
   );
 }
