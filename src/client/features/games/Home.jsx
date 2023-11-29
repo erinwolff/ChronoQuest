@@ -12,6 +12,7 @@ export const GameCard = ({ game }) => {
             <p className="game-text">
               {game.title}
               <br />
+              <br />
               <img src={game.imageUrl} />
               <br />
               {game.time}
@@ -40,14 +41,20 @@ export default function Home() {
       </div>
 
       <div className="games">
-        <h5>Join the party!</h5>
-        <h6>Create a profile to track your games & write reviews.</h6>
+        <div className="home-text-card">
+          <h5>Join the party!</h5>
+          <br />
+          <h6>Create a profile to track your games & write reviews.</h6>
+          <br />
+          <h5>Beat the eternal quest of time</h5>
+          <br />
+          <h6>Wondering about the time commitment for that next game? Search the collection for detailed information, provided by users, for users! </h6>
+          <br />
+        </div>
         <br />
-        <h5>Beat the eternal quest of time!</h5>
-        <h6>Wondering about the time commitment for that next game? Search the collection for detailed information, provided by users, for users! </h6>
-        <br />
-        <h5>See what the world is playing:</h5>
-        <br />
+        <div className="home-text-card">
+          <h5>See what the world is playing</h5>
+        </div>
         {isLoading && <p>Loading games...</p>}
         {filteredGame ? (
           <ul className="search">
@@ -58,7 +65,7 @@ export default function Home() {
             }
           </ul>
         ) : (
-          <ul>
+          <ul className="gamecard-container">
             {games?.map((game, index) => (
               index >= (games.length - 10) && (
                 <GameCard key={game.id} game={game} />
