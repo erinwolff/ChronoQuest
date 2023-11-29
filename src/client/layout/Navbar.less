@@ -1,12 +1,50 @@
+@link-color: #428bca;
+@link-color-hover: darken(@link-color, 10%);
+
 nav.top {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  text-align: center;
+  padding: 1%;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid #000000;
+  margin: 0 auto;
 
-  border-bottom: 2px solid #aaa;
+
+  a {
+    color: @link-color;
+    margin: 0 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+      color: @link-color-hover;
+    }
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    border-bottom: 1px solid #000000;
+    margin-top: 1em;
+  }
 
   menu {
     display: flex;
     gap: 1ch;
+  }
+
+  .clockLogo {
+    padding: 1%;
+    width: 75px;
   }
 }

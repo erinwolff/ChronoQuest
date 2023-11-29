@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
     <nav className="top">
-      <img src={clockLogo}/><h1>ChronoQuest</h1>
+      <img className="clockLogo" src={clockLogo}/><h1>ChronoQuest</h1>
       <menu>
         {token ? (
           <li>
