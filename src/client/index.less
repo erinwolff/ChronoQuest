@@ -1,18 +1,21 @@
-@bg: #ffffff;
-@text: #333;
+@text: rgb(0, 0, 0);
 @link-color: #428bca; // sea blue
 @link-color-hover: darken(@link-color, 10%);
 
 @font-face {
-  font-family: Inter;
-  src: url("./assets/Inter.ttf");
+  font-family: 'RobotoMono';
+  src: url("./assets/RobotoMono-VariableFont_wght.ttf");
 }
 
 :root {
-  font-family: Inter, sans-serif;
+  font-family: RobotoMono, monospace;
 
   color: @text;
-  background-color: @bg;
+  background-image: url("./assets/background.jpg");
+  background-size: 40%;
+  background-position: center;
+  background-repeat: repeat;
+
 }
 
 * {
@@ -36,4 +39,94 @@ a {
     text-decoration: underline;
     color: @link-color-hover;
   }
+}
+
+.top {
+  background-color: white;
+}
+
+.game-card {
+  border: 1px solid black;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  padding: 1em;
+  margin: 1em auto;
+  background-color: white;
+  flex-shrink: 0;
+  max-width: 300px;
+  max-height: 500px;
+}
+
+.game-text {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  font-size: 15px;
+  margin: 0 auto;
+
+}
+
+.gamecard-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-evenly;
+  gap: 40px 20px;
+  width: 100%;
+  border-radius: 3%;
+  flex-shrink: 0;
+  max-width: 1500px;
+  max-height: 2000px;
+  margin: 0 auto;
+}
+
+.search {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-evenly;
+  gap: 40px 20px;
+  width: 100%;
+  border-radius: 3%;
+  flex-shrink: 0;
+  max-width: 1500px;
+  max-height: 2000px;
+  margin: 0 auto;
+}
+
+.home-text-card {
+  border: 1px solid black;
+  background-color: white;
+  width: 30%;
+  margin: 0 auto;
+  text-align: center;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  border-radius: 3%;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+.search-bar {
+  width: 200px;
+  margin-left: auto;
+  display: block;
+  padding: 0.5em;
 }
