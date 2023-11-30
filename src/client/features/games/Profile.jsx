@@ -15,6 +15,7 @@ export const GamesCard = ({ game }) => {
           <p className="game-text">
             {game.title}
             <br />
+            <br />
             <img className="game-image" src={game.imageUrl} />
             <br />
             {game.time}
