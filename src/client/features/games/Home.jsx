@@ -57,7 +57,7 @@ export default function Home() {
         ) : (
           <ul className="gamecard-container">
             {games?.map((game, index) => (
-              index >= (games.length - 10) && (
+              index >= (games.length - 20) && (
                 <GameCard key={game.id} game={game} />
               )))}
           </ul>
