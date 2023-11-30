@@ -54,10 +54,11 @@ export const GameForm = () => {
             options={[...new Set(games?.map((option) => option.title))]}
             value={autocompleteValue}
             onInputChange={(event, newInputValue) => setAutocompleteValue(newInputValue)}
+            className="autocomplete"
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Search for Game Title. Don't see it? Add a new one."
+                label="Game Title"
                 required
               />
             )}
@@ -75,7 +76,7 @@ export const GameForm = () => {
           value={gameImage}
           onChange={(e) => setGameImage(e.target.value)}
         />
-        <input
+        <textarea
           type="text"
           placeholder="Review"
           value={gameReview}
@@ -104,13 +105,13 @@ export default function Profile() {
     return (
       <>
         <div className="search-bar">
-          <input type="text" value={filteredGame} onChange={(e) => setFilteredGame(e.target.value)} placeholder="Search" />
+          <input type="text" value={filteredGame} onChange={(e) => setFilteredGame(e.target.value)} placeholder="Search your games" />
         </div>
-        <h1>{username}'s Games</h1>
+        <h1 className="profile-header">{username}'s Games</h1>
         <br />
         {isLoading && <p>Loading games...</p>}
         {filteredGame ? (
-          <div>
+          <div className="profile">
             <ul className="search">{
               filteredGames?.map((game) => (
                 <GamesCard key={game.id} game={game} />
@@ -119,23 +120,27 @@ export default function Profile() {
             </ul>
             <br />
             <br />
-            <h4>Finished a game?</h4>
-            <br />
-            <h4>Add it to the list.</h4>
+            <div className="text-card">
+              <h4>Finished a game?</h4>
+              <br />
+              <h4>Search for the game title. Don't see it? Add a new one.</h4>
+            </div>
             <GameForm />
           </div>
         ) : (
-          <div>
-            <ul>
+          <div className="profile">
+            <ul className="gamecard-container">
               {games?.map((game) => (
                 <GamesCard key={game.id} game={game} />
               ))}
             </ul>
             <br />
             <br />
-            <h4>Finished a game?</h4>
-            <br />
-            <h4>Add it to the list.</h4>
+            <div className="text-card">
+              <h4>Finished a game?</h4>
+              <br />
+              <h6>Search for the game title. Don't see it? Add a new one.</h6>
+            </div>
             <GameForm />
           </div>
         )}

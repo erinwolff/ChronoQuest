@@ -103,8 +103,7 @@ a {
   margin-top: 0 auto;
 }
 
-.home-text-card {
-  border: 1px solid black;
+.text-card {
   background-color: rgba(255, 255, 255, 0.9);
   z-index: 1000;
   width: 30%;
@@ -192,4 +191,44 @@ input {
   @media (max-width: 1200px) {
     max-width: 100%;
   }
+}
+
+
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1em auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  flex-shrink: 0;
+  z-index: 1000;
+  font-size: 2rem;
+  width: 80%;
+}
+
+.add-game-form {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  width: 60%;
+  margin: 0 auto;
+  max-width: 1200px;
+  min-width: 500px;
+
+  @media (max-width: 500px) {
+    min-width: 100%;
+  }
+}
+
+.autocomplete {
+  margin-top: 1%;
+  min-width: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
 }

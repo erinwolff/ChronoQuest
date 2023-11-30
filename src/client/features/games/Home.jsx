@@ -41,7 +41,7 @@ export default function Home() {
       </div>
 
       <div className="games">
-        <div className="home-text-card">
+        <div className="text-card">
           <h5>Join the party!</h5>
           <br />
           <h6>Create a profile to track your games & write reviews.</h6>
@@ -52,7 +52,7 @@ export default function Home() {
           <br />
         </div>
         <br />
-        <div className="home-text-card">
+        <div className="text-card">
           <h5>See what the world is playing</h5>
         </div>
         {isLoading && <p>Loading games...</p>}
