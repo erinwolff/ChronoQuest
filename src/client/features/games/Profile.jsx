@@ -109,7 +109,7 @@ export default function Profile() {
         <div className="search-bar">
           <input type="text" value={filteredGame} onChange={(e) => setFilteredGame(e.target.value)} placeholder="Search your games" />
         </div>
-        <h1 className="profile-header"> 🎮 Welcome home, {username} 🎮</h1>
+        <h1 className="profile-header">Welcome home, {username} 🎮</h1>
         <br />
         {isLoading && <p>Loading games...</p>}
         {filteredGame ? (
