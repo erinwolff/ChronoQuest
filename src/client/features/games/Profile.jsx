@@ -84,7 +84,7 @@ export const GameForm = () => {
           value={gameReview}
           onChange={(e) => setGameReview(e.target.value)}
         />
-        <button>Submit</button>
+        <button class="button-53" role="button">Submit</button>
       </form>
     </>
   )
