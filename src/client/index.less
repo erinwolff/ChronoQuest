@@ -142,12 +142,20 @@ h6 {
 
 .authForm {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  flex-flow: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
   gap: 20px;
-  width: 100%;
+  width: 50%;
   margin: 0 auto;
   margin-top: 100px;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 1000;
+  max-width: 1200px;
+  min-width: 500px;
 
   @media (max-width: 1200px) {
     justify-content: center;
@@ -156,4 +164,13 @@ h6 {
   @media (max-width: 500px) {
     min-width: 100%;
   }
+}
+
+label {
+  font-weight: bold;
+  padding: 1%;
+}
+
+input {
+  font-family: RobotoMono, monospace;
 }

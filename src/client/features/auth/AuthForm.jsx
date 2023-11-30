@@ -54,6 +54,7 @@ export default function AuthForm() {
             autoComplete="username"
           />
         </label>
+        <br />
         <label>
           Password
           <input
@@ -63,22 +64,19 @@ export default function AuthForm() {
             autoComplete="current-password"
           />
         </label>
+        <br />
         <button>{authAction}</button>
       </form>
       <a onClick={() => setIsLogin(!isLogin)}>{altCopy}</a>
-      <br/>
-      <br/>
+      <br />
       <h5>What is included in a membership?</h5>
-      <br/>
       <h6>
         Share your playtime data with the world.
-        <br/>
-
+        <br />
         Write reviews for those games you love (or hate).
-        <br/>
-        Make posts on the forum to start a conversation.
-        <br/>
-        All at no cost &#128516;</h6>
+        <br />
+        All at no cost &#128516;
+      </h6>
 
       {(loginLoading || registerLoading) && <p>Please wait...</p>}
       {loginError && <p role="alert">{loginError}</p>}
