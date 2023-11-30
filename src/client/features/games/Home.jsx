@@ -42,18 +42,8 @@ export default function Home() {
 
       <div className="games">
         <div className="text-card">
-          <h5>Join the party!</h5>
-          <br />
-          <h6>Create a profile to track your games & write reviews.</h6>
-          <br />
-          <h5>Beat the eternal quest of time</h5>
-          <br />
-          <h6>Wondering about the time commitment for that next game? Search the collection for detailed information, provided by users, for users! </h6>
-          <br />
-        </div>
-        <br />
-        <div className="text-card">
-          <h5>See what the world is playing</h5>
+          <h5>Beat the Eternal Quest of Time</h5>
+          <p>Curious about the time commitment for that next game? Search the collection for detailed information, provided by users, for users!</p>
         </div>
         {isLoading && <p>Loading games...</p>}
         {filteredGame ? (
