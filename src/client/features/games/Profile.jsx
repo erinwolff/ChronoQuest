@@ -114,12 +114,13 @@ export default function Profile() {
           <div className="profile">
             <div className="text-card">
               <h1 className="profile-header">Welcome home, {username} 🎮</h1>
-              <br/>
+              <br />
               <h4>Finished a game?</h4>
               <br />
               <h4>Search for the game title. Don't see it? Add a new one.</h4>
+              <br />
+              <GameForm />
             </div>
-            <GameForm />
             <ul className="search">{
               filteredGames?.map((game) => (
                 <GamesCard key={game.id} game={game} />
@@ -133,12 +134,13 @@ export default function Profile() {
           <div className="profile">
             <div className="text-card">
               <h1 className="profile-header">Welcome home, {username} 🎮</h1>
-              <br/>
+              <br />
               <h4>Finished a game?</h4>
               <br />
               <h6>Search for the game title. Don't see it? Add a new one.</h6>
+              <br />
+              <GameForm />
             </div>
-            <GameForm />
             <ul className="gamecard-container">
               {games?.map((game) => (
                 <GamesCard key={game.id} game={game} />
