@@ -109,12 +109,12 @@ export default function Profile() {
         <div className="search-bar">
           <input type="text" value={filteredGame} onChange={(e) => setFilteredGame(e.target.value)} placeholder="Search your games" />
         </div>
-        <h1 className="profile-header">Welcome home, {username} 🎮</h1>
-        <br />
         {isLoading && <p>Loading games...</p>}
         {filteredGame ? (
           <div className="profile">
             <div className="text-card">
+              <h1 className="profile-header">Welcome home, {username} 🎮</h1>
+              <br/>
               <h4>Finished a game?</h4>
               <br />
               <h4>Search for the game title. Don't see it? Add a new one.</h4>
@@ -132,6 +132,8 @@ export default function Profile() {
         ) : (
           <div className="profile">
             <div className="text-card">
+              <h1 className="profile-header">Welcome home, {username} 🎮</h1>
+              <br/>
               <h4>Finished a game?</h4>
               <br />
               <h6>Search for the game title. Don't see it? Add a new one.</h6>
