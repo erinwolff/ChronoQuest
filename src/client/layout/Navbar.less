@@ -1,18 +1,6 @@
 @link-color: #428bca;
 @link-color-hover: darken(@link-color, 10%);
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  50% {
-    box-shadow: 0 0 12px #3DD1E7, 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-  100% {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-}
-
 nav.top {
   display: flex;
   justify-content: center;
@@ -28,7 +16,6 @@ nav.top {
   z-index: 1000;
   border: 1px dotted #000000;
   margin: 0 auto;
-  animation: pulse 2s infinite;
 
   @media (max-width: 900px) {
     justify-content: center;

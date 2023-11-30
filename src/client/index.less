@@ -7,6 +7,18 @@
   src: url("./assets/RobotoMono-VariableFont_wght.ttf");
 }
 
+@keyframes pulse {
+  0% {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 12px #3DD1E7, 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
 :root {
   font-family: RobotoMono, monospace;
 
@@ -139,6 +151,7 @@ h6 {
   flex-wrap: wrap;
   margin-top: 0;
   min-width: 350px;
+  animation: pulse 2s infinite;
 }
 
 .authForm {
