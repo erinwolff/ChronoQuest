@@ -41,7 +41,7 @@ export default function Details() {
         <h3>{game.title}</h3>
         <h4>Posted by: {username}</h4>
         <br />
-        <img src={game.imageUrl} />
+        <img className="details-game-image" src={game.imageUrl} />
         <br />
         <h4>{username}'s Playtime:</h4>
         <br />
