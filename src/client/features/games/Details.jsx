@@ -51,8 +51,11 @@ export default function Details() {
         <h4>{username}'s Review:</h4>
         <br />
         {review}
+        <br/>
+        <br/>
+        <button className="deleteButton" onClick={handleDelete}>DELETE</button>
       </main>
-      <button className="deleteButton" onClick={handleDelete}>DELETE</button>
+      
     </>
   ))
 

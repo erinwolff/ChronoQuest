@@ -114,7 +114,7 @@ a {
   flex-wrap: wrap;
   border-radius: 3%;
   margin-top: 0;
-  min-width: 200px;
+  min-width: 350px;
 }
 
 h1 {
@@ -173,4 +173,23 @@ label {
 
 input {
   font-family: RobotoMono, monospace;
+}
+
+.game-details {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1em;
+  margin: 1em auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  flex-shrink: 0;
+  max-width: 300px;
+  max-height: 500px;
+  z-index: 1000;
+
+  @media (max-width: 1200px) {
+    max-width: 100%;
+  }
 }
