@@ -6,6 +6,7 @@ import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete"
 
+
 export const GamesCard = ({ game }) => {
   return (
     <ul className="game-card">
@@ -107,7 +108,7 @@ export default function Profile() {
         <div className="search-bar">
           <input type="text" value={filteredGame} onChange={(e) => setFilteredGame(e.target.value)} placeholder="Search your games" />
         </div>
-        <h1 className="profile-header">{username}'s Games</h1>
+        <h1 className="profile-header"> 🎮 Welcome home, {username} 🎮</h1>
         <br />
         {isLoading && <p>Loading games...</p>}
         {filteredGame ? (
