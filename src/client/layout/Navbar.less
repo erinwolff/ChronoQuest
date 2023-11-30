@@ -26,45 +26,47 @@ nav.top {
     font-size: .8em;
   }
 
-  a {
-    color: @link-color;
-    margin: 0.5em;
-    font-weight: bold;
-    text-transform: uppercase;
-    text-decoration: none;
-    white-space: nowrap;
-
-    &:hover {
-      color: @link-color-hover;
-    }
-  }
-
-  h1 {
-    @media (max-width: 412px) {
-      font-size: 1.5rem;
-    }
-  }
-
-  menu {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1ch;
-  }
-
   .clockLogo {
-    padding: 1%;
-    width: 75px;
+    margin: 2%;
+    width: 50px;
+
+    @media (max-width: 412px) {
+      min-width: 25px;
+    }
   }
+}
 
+h1 {
   @media (max-width: 412px) {
+    font-size: 1.5rem;
+  }
+}
 
-    a {
-      margin: 0.5em;
+menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .navIconsContainer {
+    margin: 0.5em;
+
+    .navIcons {
+      width: 35px;
+      transition: box-shadow 0.3s;
+      border-radius: 10%;
+
+      &:hover {
+        box-shadow: 4px 4px 4px rgba(8, 9, 10, 0.925);
+      }
+
+      @media (max-width: 412px) {
+        width: 30px;
+      }
     }
 
-    .clockLogo {
-      width: 35px;
+    p {
+      margin: 0;
+      font-size: 0.8em;
     }
   }
 }
