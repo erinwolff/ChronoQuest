@@ -57,8 +57,7 @@ export const PostForm = () => {
 
 export default function Forum() {
   const { data: posts, isLoading } = useGetAllPostsQuery();
-  console.log(posts)
-
+  
   return (
     <div>
       <PostForm />
