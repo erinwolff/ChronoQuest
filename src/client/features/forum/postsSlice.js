@@ -15,16 +15,17 @@ const postsApi = api.injectEndpoints({
       invalidatesTags: ["Forum"],
     }),
     createComment: builder.mutation({
-      query: (postComment) => ({
+      query: ({id, postComment}) => ({
         url: `/post/${id}`,
         method: "POST",
-        body: postComment,
+        body: {id, postComment},
       }),
-      invalidatesTags: ["Forum"],
+      invalidatesTags: ["Forum", "Post"],
     }),
     getPostById: builder.query({
       query: (id) => `/post/${id}`,
       method: "GET",
+      providesTags: ["Post"]
     }),
     deletePost: builder.mutation({
       query: (id) => ({
@@ -38,7 +39,7 @@ const postsApi = api.injectEndpoints({
         url: `/post/${id}/comment`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Forum"],
+      invalidatesTags: ["Forum", "Post"],
     }),
   }),
 });
