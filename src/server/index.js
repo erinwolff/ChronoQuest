@@ -34,6 +34,15 @@ const createApp = async () => {
   // /api/details
   app.use("/api/details", require("./api/details"));
 
+  // /api/forum
+  app.use("/api/forum", require("./api/forum"));
+
+  // /api/post
+  app.use("/api/post", require("./api/postDetails"));
+
+  // /api/post/:id/comments
+  app.use("/api/post/:id/comments", require("./api/postDetails"))
+
 
   // Serve static HTML in production & Vite dev server in development
   if (process.env.NODE_ENV === "production") {
