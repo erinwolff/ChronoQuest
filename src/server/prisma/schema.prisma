@@ -15,6 +15,8 @@ model User {
   username String @unique
   password String
   games    Game[]
+  posts    Post[]
+  comments Comment[]
 }
 
 model Game {
@@ -25,4 +27,24 @@ model Game {
   imageUrl    String
   review      String
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Post {
+id          Int     @id @default(autoincrement())
+title       String
+createdAt   DateTime @default(now())
+userId      Int
+postContent String
+user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+comments    Comment[]
+}
+
+model Comment {
+id          Int     @id @default(autoincrement())
+comment     String
+createdAt   DateTime @default(now())
+postId      Int
+userId      Int
+post        Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
+user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

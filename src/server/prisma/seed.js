@@ -2,7 +2,7 @@ const prisma = require("../prisma");
 
 /** Seeds the database with a test user and one game */
 const seed = async () => {
-  await prisma.user.create({
+  const user = await prisma.user.create({
     data: {
       username: "foo",
       password: "bar",
@@ -16,8 +16,30 @@ const seed = async () => {
           },
         ],
       },
+      posts: {
+        create: [
+          {
+            title: "I can't beat level 99!",
+            postContent: "This is super frustrating. Anyone have any ideas? Help!",
+          }
+        ]
+      }
+    },
+    include: {
+      posts: true,
     },
   });
+
+
+  const postId = user.posts[0].id;
+
+  await prisma.comment.create({
+    data: {
+      comment: "Have you tried using the stealth armor set?",
+      userId: user.id,
+      postId: postId,
+    }
+  })
 };
 
 seed()
