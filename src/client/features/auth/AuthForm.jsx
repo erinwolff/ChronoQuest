@@ -65,7 +65,7 @@ export default function AuthForm() {
           />
         </label>
         <br />
-        <button class="button-53" role="button">{authAction}</button>
+        <button className="button-53" role="button">{authAction}</button>
       </form>
       <a onClick={() => setIsLogin(!isLogin)}>{altCopy}</a>
       <br />
