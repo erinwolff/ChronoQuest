@@ -6,6 +6,7 @@ import homeIcon from "../assets/home.png"
 import loginIcon from "../assets/login.png"
 import logoutIcon from "../assets/logout.png"
 import profileIcon from "../assets/user.png"
+import forumIcon from "../assets/forum.png"
 
 import "./Navbar.less";
 
@@ -35,6 +36,10 @@ export default function Navbar() {
               <p>Home</p>
             </div>
             <div className="navIconsContainer">
+              <NavLink to="/forum"><img className="navIcons" src={forumIcon} /></NavLink>
+              <p>Forum</p>
+            </div>
+            <div className="navIconsContainer">
               <NavLink to="/profile"><img className="navIcons" src={profileIcon} /></NavLink>
               <p>Profile</p>
             </div>
@@ -48,6 +53,10 @@ export default function Navbar() {
             <div className="navIconsContainer">
               <NavLink to="/home"><img className="navIcons" src={homeIcon} /></NavLink>
               <p>Home</p>
+            </div>
+            <div className="navIconsContainer">
+              <NavLink to="/forum"><img className="navIcons" src={forumIcon} /></NavLink>
+              <p>Forum</p>
             </div>
             <div className="navIconsContainer">
               <NavLink to="/login"><img className="navIcons" src={loginIcon} /></NavLink>
