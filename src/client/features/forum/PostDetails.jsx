@@ -87,14 +87,14 @@ export default function PostDetails() {
       <>
         <main className="post-details">
           <h3>{postTitle}</h3>
+          <br />
           <h4>Posted by: {username}</h4>
           <br />
-          <h4>{postContent}</h4>
+          <p>{postContent}</p>
           <br />
-          <h4>Comments: </h4>
           {postComments.map((comment) => (
-            <div key={comment.id}>
-              <p>{comment.user.username} says: {comment.comment}</p>
+            <div className="comments-container" key={comment.id}>
+              <p><b>{comment.user.username} says:</b> {comment.comment}</p>
             </div>
           ))}
         </main>
@@ -107,9 +107,10 @@ export default function PostDetails() {
       <>
         <main className="post-details">
           <h3>{postTitle}</h3>
+          <br />
           <h4>Posted by: {username} on {formattedDate} </h4>
           <br />
-          <h4>{postContent}</h4>
+          <p>{postContent}</p>
           <br />
           <h4>Share your thoughts: </h4>
           <br />
