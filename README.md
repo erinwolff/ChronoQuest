@@ -8,7 +8,7 @@ API routes can be found in `src/server/api/`.
 
 Authentication is handled with [JWT](https://github.com/auth0/node-jsonwebtoken). User passwords are hashed with [bcrypt](https://github.com/kelektiv/node.bcrypt.js).
 
-![Database schema as described below](database_schema.svg)
+Database schema as described below
 
 <details>
 <summary>Expand to see DBML</summary>
