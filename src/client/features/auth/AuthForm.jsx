@@ -8,7 +8,7 @@ export default function AuthForm() {
 
   // Handles swapping between login and register
   const [isLogin, setIsLogin] = useState(true);
-  const authAction = isLogin ? "Login" : "Register";
+  const authAction = isLogin ? "LOGIN" : "REGISTER";
   const altCopy = isLogin
     ? "Need an account? Register here."
     : "Already have an account? Login here.";
@@ -65,10 +65,13 @@ export default function AuthForm() {
           />
         </label>
         <br />
-        <button className="button-53" role="button">{authAction}</button>
+        <button className="small-button-53" role="button">{authAction}</button>
       </form>
       <a onClick={() => setIsLogin(!isLogin)}>{altCopy}</a>
-      <br />
+      {(loginLoading || registerLoading) && <p>Please wait...</p>}
+      {loginError && <p role="alert">{loginError}</p>}
+      {registerError && <p role="alert">{registerError}</p>}
+
       <h5>Join the community:</h5>
       <h6>
         Showcase your playtime stats for the world to see.
@@ -80,9 +83,7 @@ export default function AuthForm() {
         🎮 Best of all, it's completely free! 🎮
       </h6>
 
-      {(loginLoading || registerLoading) && <p>Please wait...</p>}
-      {loginError && <p role="alert">{loginError}</p>}
-      {registerError && <p role="alert">{registerError}</p>}
+
     </div>
   );
 }
