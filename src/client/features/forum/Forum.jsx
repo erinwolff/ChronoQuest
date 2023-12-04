@@ -3,23 +3,21 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const PostCard = ({ post }) => {
+  const formattedDate = new Date(post.createdAt).toLocaleString();
+
   return (
     <>
-      <ul className="post-card">
-        <section>
-          <li className="post">
-            <p className="post-text">
-              {post.title}
-              <br />
-              Posted on: {post.createdAt}
-              <br />
-              {post.postContent}
-              <br />
-              <Link to={`/post/${post.id}`}> View </Link>
-            </p>
-          </li>
-        </section>
-      </ul>
+      <div className="post-text">
+        
+          <h3>{post.title}</h3>
+          <br />
+          <h4>Date posted: {formattedDate}</h4>
+          <br />
+          <p>{post.postContent}</p>
+          <br />
+          <Link className="view-link" to={`/post/${post.id}`}> View </Link>
+        
+      </div>
     </>
   )
 }
@@ -38,17 +36,18 @@ export const PostForm = () => {
   };
 
   return (
-    <>
+    <>    
       <form className="add-post-form" onSubmit={handleSubmit}>
+      <h3>What's on your mind?</h3>
         <input required
           type="text"
-          placeholder="Post Title"
+          placeholder="Title"
           value={postTitle}
           onChange={(e) => setPostTitle(e.target.value)}
         />
-        <input
+        <textarea
           type="text"
-          placeholder="What's on your mind?"
+          placeholder="Content"
           value={postDetails}
           onChange={(e) => setPostDetails(e.target.value)}
         />
@@ -71,7 +70,7 @@ export default function Forum() {
         <input type="text" value={filteredPost} onChange={(e) => setFilteredPost(e.target.value)} placeholder="Looking for a post?" />
       </div>
       <div>
-        <PostForm />
+        
         {isLoading && <p>Loading posts...</p>}
         {filteredPost ? (
           <ul className="search">
@@ -82,12 +81,13 @@ export default function Forum() {
             }
           </ul>
         ) : (
-          <ul className="post-container">
+          <div className="forum-container">
+            <PostForm />
             {posts?.map((post, index) => (
               index >= (posts.length - 30) && (
                 <PostCard key={post.id} post={post} />
               )))}
-          </ul>
+          </div>
         )}
       </div>
     </>

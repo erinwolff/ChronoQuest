@@ -37,6 +37,7 @@ export default function PostDetails() {
   const username = data?.user.username || "";
   const postContent = data?.postContent || "";
   const postComments = data?.comments || "";
+  const formattedDate = new Date(data?.createdAt).toLocaleString();
 
   // Handle delete post function
   const navigate = useNavigate();
@@ -106,7 +107,7 @@ export default function PostDetails() {
       <>
         <main className="post-details">
           <h3>{postTitle}</h3>
-          <h4>Posted by: {username}</h4>
+          <h4>Posted by: {username} on {formattedDate} </h4>
           <br />
           <h4>{postContent}</h4>
           <br />
