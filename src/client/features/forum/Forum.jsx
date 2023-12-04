@@ -51,7 +51,7 @@ export const PostForm = () => {
           value={postDetails}
           onChange={(e) => setPostDetails(e.target.value)}
         />
-        <button className="small-button-53" role="button">Submit</button>
+        <button className="small-button-53" role="button">SUBMIT</button>
       </form>
     </>
   )
