@@ -4,27 +4,27 @@ import { selectToken } from "../auth/authSlice"
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
-export const CommentForm = ({id}) => {
+export const CommentForm = ({ id }) => {
   const [postComment, setPostComment] = useState("");
   const [newComment] = useCreateCommentMutation();
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await newComment({id, postComment}) ;
+    await newComment({ id, postComment });
     setPostComment("");
   };
 
   return (
     <>
       <form className="add-post-form" onSubmit={handleSubmit}>
-        <input required
+        <textarea required
           type="text"
           placeholder="Comment"
           value={postComment}
           onChange={(e) => setPostComment(e.target.value)}
         />
-        <button className="button-53" role="button">Submit</button>
+        <button className="small-button-53" role="button">SUBMIT</button>
       </form>
     </>
   )
@@ -84,7 +84,7 @@ export default function PostDetails() {
       <p>Loading...</p>
     ) : (data && (
       <>
-        <main className="game-details">
+        <main className="post-details">
           <h3>{postTitle}</h3>
           <h4>Posted by: {username}</h4>
           <br />
@@ -93,8 +93,7 @@ export default function PostDetails() {
           <h4>Comments: </h4>
           {postComments.map((comment) => (
             <div key={comment.id}>
-              <p>{comment.comment}</p>
-              <p>Posted by: {comment.user.username}</p>
+              <p>{comment.user.username} says: {comment.comment}</p>
             </div>
           ))}
         </main>
@@ -105,22 +104,21 @@ export default function PostDetails() {
       <p>Loading...</p>
     ) : (data && (
       <>
-        <main className="game-details">
+        <main className="post-details">
           <h3>{postTitle}</h3>
           <h4>Posted by: {username}</h4>
           <br />
           <h4>{postContent}</h4>
           <br />
-          <h4>Comments: </h4>
+          <h4>Share your thoughts: </h4>
+          <br />
+          <CommentForm id={id} />
           {postComments.map((comment) => (
-            <div key={comment.id}>
-              <p>{comment.comment}</p>
-              <p>Posted by: {comment.user.username}</p>
-              <button className="button-53" role="button" onClick={()=>handleDeleteComment(comment.id)}>DELETE</button>
+            <div className="comments-container" key={comment.id}>
+              <p><b>{comment.user.username} says:</b> {comment.comment} <button className="small-button-53 delete-comment" role="button" onClick={() => handleDeleteComment(comment.id)}>DELETE</button></p>
             </div>
           ))}
-          <button className="button-53" role="button" onClick={handleDelete}>DELETE</button>
-          <CommentForm id = {id} />
+          <button className="small-button-53 delete-post" role="button" onClick={handleDelete}>DELETE POST</button>
         </main>
       </>
     ))
