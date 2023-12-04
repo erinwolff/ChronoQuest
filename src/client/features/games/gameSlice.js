@@ -3,7 +3,7 @@ import api from "../../store/api";
 const gamesApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getUserGames: builder.query({
-      query: () => "/profile",
+      query: () => "/profile/games",
       providesTags: ["Games"],
     }),
     getGameById: builder.query({
