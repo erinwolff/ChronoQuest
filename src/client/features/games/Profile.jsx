@@ -117,10 +117,8 @@ export default function Profile() {
   const token = useSelector(selectToken);
   const { data, isLoading } = useGetUserGamesQuery();
   const { data: posts } = useGetUserPostsQuery();
-  console.log(posts)
-  
+
   const games = data?.games || [];
-  console.log(games)
   const username = data?.username || "";
   const [filteredGame, setFilteredGame] = useState("");
   const filteredGames = games?.filter((g) => (g.title.toLowerCase().includes(filteredGame.toLowerCase()) || g.time.toLowerCase().includes(filteredGame.toLowerCase())));
