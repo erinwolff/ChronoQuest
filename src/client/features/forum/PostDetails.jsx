@@ -115,7 +115,7 @@ export default function PostDetails() {
           <CommentForm id={id} />
           {postComments.map((comment) => (
             <div className="comments-container" key={comment.id}>
-              <p><b>{comment.user.username} says:</b> {comment.comment} <button className="small-button-53 delete-comment" role="button" onClick={() => handleDeleteComment(comment.id)}>DELETE</button></p>
+              <p><b>{comment.user.username} says:</b> {comment.comment} <button className="small-button-53 delete-right" role="button" onClick={() => handleDeleteComment(comment.id)}>DELETE</button></p>
             </div>
           ))}
           <button className="small-button-53 delete-post" role="button" onClick={handleDelete}>DELETE POST</button>

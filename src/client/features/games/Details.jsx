@@ -79,7 +79,7 @@ export default function Details() {
           {review}
           <br />
           <br />
-          <button className="button-53" role="button" onClick={handleDelete}>DELETE</button>
+          <button className="small-button-53 delete-right" role="button" onClick={handleDelete}>DELETE</button>
         </main>
       </>
     ))
