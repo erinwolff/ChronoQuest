@@ -45,7 +45,7 @@ export const PostForm = () => {
           value={postTitle}
           onChange={(e) => setPostTitle(e.target.value)}
         />
-        <textarea
+        <textarea required
           type="text"
           placeholder="Content"
           value={postDetails}

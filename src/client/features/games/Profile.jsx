@@ -32,16 +32,11 @@ export const GamesCard = ({ game }) => {
 
 export const PostsCard = ({ post }) => {
   return (
-    <ul className="game-card">
+    <ul className="post-card">
       <section>
         <li className="game">
           <p className="game-text">
-            {post.title}
-            <br />
-            <br />
-            {post.postContent}
-            <br />
-            <Link to={`/post/${post.id}`}> View </Link>
+            <Link to={`/post/${post.id}`}> {post.title} </Link>
           </p>
         </li>
       </section>
@@ -143,6 +138,7 @@ export default function Profile() {
               <h4>Search for the game title. Don't see it? Add a new one.</h4>
               <br />
               <GameForm />
+              <h4>{username}'s Forum Posts</h4>
               {posts?.posts.map((post) => (
                 <PostsCard key={post.id} post={post} />
               ))}
@@ -166,6 +162,7 @@ export default function Profile() {
               <h6>Search for the game title. Don't see it? Add a new one.</h6>
               <br />
               <GameForm />
+              <h4>{username}'s Forum Posts</h4>
               {posts?.posts.map((post) => (
                 <PostsCard key={post.id} post={post} />
               ))}

@@ -390,3 +390,19 @@ input {
   }
 }
 
+.post-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1em auto;
+  background-color: rgb(255, 255, 255);
+  flex-shrink: 0;
+  max-width: 300px;
+  max-height: 500px;
+  z-index: 1000;
+
+  @media (max-width: 1200px) {
+    max-width: 100%;
+  }
+}
