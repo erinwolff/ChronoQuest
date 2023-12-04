@@ -43,7 +43,10 @@ export default function Home() {
       <div className="games">
         <div className="text-card">
           <h5>Beat the Eternal Quest of Time</h5>
-          <p>Curious about the time commitment for that next game? Search the collection for detailed information, provided by users, for users!</p>
+          <p>Curious about the time commitment for your next game? <br/>
+          Delve into the collection for detailed insights 
+          <br/>
+          shared by gamers, for gamers!</p>
         </div>
         {isLoading && <p>Loading games...</p>}
         {filteredGame ? (
