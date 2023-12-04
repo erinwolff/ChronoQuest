@@ -80,9 +80,10 @@ export default function Forum() {
           </ul>
         ) : (
           <ul className="post-container">
-            {posts?.map((post) => (
+            {posts?.map((post, index) => (
+              index >= (posts.length - 30) && (
               <PostCard key={post.id} post={post} />
-            ))}
+            )))}
           </ul>
         )}
       </div>
