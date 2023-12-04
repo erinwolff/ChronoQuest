@@ -33,7 +33,7 @@ Table Game {
   user        User    
 }
 
-model Post {
+Table Post {
 id          Serial [pk]
 title       String
 createdAt   DateTime @default(now())
@@ -43,7 +43,7 @@ user        User
 comments    Comment[]
 }
 
-model Comment {
+Table Comment {
 id          Serial [pk]
 comment     String
 createdAt   DateTime @default(now())
