@@ -57,17 +57,36 @@ export const PostForm = () => {
 
 export default function Forum() {
   const { data: posts, isLoading } = useGetAllPostsQuery();
-  
+ 
+  const [filteredPost, setFilteredPost] = useState("");
+  const filteredPosts = posts?.filter((p) => (p.title.toLowerCase().includes(filteredPost.toLowerCase())));
+
+
   return (
-    <div>
-      <PostForm />
-      {isLoading && <p>Loading posts...</p>}
-      <ul className="post-container">
-        {posts?.map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))}
-      </ul>
-    </div>
-  )
+    <>
+      <div className="search-bar">
+        <input type="text" value={filteredPost} onChange={(e) => setFilteredPost(e.target.value)} placeholder="Looking for a post?" />
+      </div>
+      <div>
+        <PostForm />
+        {isLoading && <p>Loading posts...</p>}
+        {filteredPost ? (
+          <ul className="search">
+            {
+              filteredPosts?.map((post) => (
+                <PostCard key={post.id} post={post} />
+              ))
+            }
+          </ul>
+        ) : (
+          <ul className="post-container">
+            {posts?.map((post) => (
+              <PostCard key={post.id} post={post} />
+            ))}
+          </ul>
+        )}
+      </div>
+    </>
+  );
 }
 

@@ -5,11 +5,11 @@ const router = require("express").Router();
 module.exports = router;
 
 // GETs all the forum posts made by all users
-router.get("/", async(req, res, next)=> {
-  try{
+router.get("/", async (req, res, next) => {
+  try {
     const result = await prisma.post.findMany();
     res.json(result);
-  } catch (err){
+  } catch (err) {
     next(err);
   }
 });
@@ -23,7 +23,7 @@ router.post("/", async (req, res, next) => {
     }
     const newPost = await prisma.post.create({
       data: {
-        title: postTitle, postContent: postDetails, 
+        title: postTitle, postContent: postDetails,
         user: {
           connect: { id: res.locals.user.id }
         }
