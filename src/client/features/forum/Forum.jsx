@@ -87,6 +87,8 @@ export default function Forum() {
             </ul>
           ) : (
             <div className="forum-container">
+              <h2>Recent Community Posts</h2>
+              <br />
               {posts?.map((post, index) => (
                 index >= (posts.length - 20) && (
                   <PostCard key={post.id} post={post} />
@@ -116,6 +118,8 @@ export default function Forum() {
             </ul>
           ) : (
             <div className="forum-container">
+              <h2>Recent Community Posts</h2>
+              <br />
               <PostForm />
               {posts?.map((post, index) => (
                 index >= (posts.length - 20) && (
