@@ -1,10 +1,12 @@
 import { useGetUserGamesQuery, useCreateGameMutation, useGetAllGamesQuery } from "./gameSlice";
+import { useGetUserPostsQuery } from "../forum/postsSlice";
 import { useSelector } from "react-redux";
 import { selectToken } from "../auth/authSlice"
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete"
+
 
 
 export const GamesCard = ({ game }) => {
@@ -21,6 +23,25 @@ export const GamesCard = ({ game }) => {
             {game.time}
             <br />
             <Link to={`/details/${game.id}`}> Review </Link>
+          </p>
+        </li>
+      </section>
+    </ul>
+  )
+}
+
+export const PostsCard = ({ post }) => {
+  return (
+    <ul className="game-card">
+      <section>
+        <li className="game">
+          <p className="game-text">
+            {post.title}
+            <br />
+            <br />
+            {post.postContent}
+            <br />
+            <Link to={`/post/${post.id}`}> View </Link>
           </p>
         </li>
       </section>
@@ -95,7 +116,11 @@ export const GameForm = () => {
 export default function Profile() {
   const token = useSelector(selectToken);
   const { data, isLoading } = useGetUserGamesQuery();
+  const { data: posts } = useGetUserPostsQuery();
+  console.log(posts)
+  
   const games = data?.games || [];
+  console.log(games)
   const username = data?.username || "";
   const [filteredGame, setFilteredGame] = useState("");
   const filteredGames = games?.filter((g) => (g.title.toLowerCase().includes(filteredGame.toLowerCase()) || g.time.toLowerCase().includes(filteredGame.toLowerCase())));
@@ -120,6 +145,9 @@ export default function Profile() {
               <h4>Search for the game title. Don't see it? Add a new one.</h4>
               <br />
               <GameForm />
+              {posts?.posts.map((post) => (
+                <PostsCard key={post.id} post={post} />
+              ))}
             </div>
             <ul className="search">{
               filteredGames?.map((game) => (
@@ -140,6 +168,9 @@ export default function Profile() {
               <h6>Search for the game title. Don't see it? Add a new one.</h6>
               <br />
               <GameForm />
+              {posts?.posts.map((post) => (
+                <PostsCard key={post.id} post={post} />
+              ))}
             </div>
             <ul className="gamecard-container">
               {games?.map((game) => (
