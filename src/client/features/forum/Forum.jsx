@@ -61,13 +61,13 @@ export default function Forum() {
   const { data: posts, isLoading } = useGetAllPostsQuery();
 
   const [filteredPost, setFilteredPost] = useState("");
-  const filteredPosts = posts?.filter((p) => (p.title.toLowerCase().includes(filteredPost.toLowerCase())));
+  const filteredPosts = posts?.filter((p) => (p.title.toLowerCase().includes(filteredPost.toLowerCase()) || p.postContent.toLowerCase().includes(filteredPost.toLowerCase())));
 
 
   return (
     <>
       <div className="search-bar">
-        <input type="text" value={filteredPost} onChange={(e) => setFilteredPost(e.target.value)} placeholder="Looking for a post?" />
+        <input type="text" value={filteredPost} onChange={(e) => setFilteredPost(e.target.value)} placeholder="Search Posts" />
       </div>
       <div>
         
@@ -84,7 +84,7 @@ export default function Forum() {
           <div className="forum-container">
             <PostForm />
             {posts?.map((post, index) => (
-              index >= (posts.length - 30) && (
+              index >= (posts.length - 20) && (
                 <PostCard key={post.id} post={post} />
               )))}
           </div>
