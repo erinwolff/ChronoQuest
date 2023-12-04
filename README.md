@@ -1,17 +1,3 @@
-# Full-stack Template
-
-This template provides a fully functional CRUD app. Once a user has successfully registered for an account and logged in, they can see their existing tasks, create new tasks, update existing tasks, and delete tasks.
-
-## Getting Started
-
-1. Click "Use This Template" and "Create a new repository."
-2. Clone down your repo and run `npm install`.
-3. Create a `.env` file according to the provided `example.env`.
-4. Apply the initial Prisma migration and generate the client.\
-   `npx prisma migrate reset`
-5. Start developing!\
-   `npm run dev`
-
 ## Architecture
 
 ### Backend
