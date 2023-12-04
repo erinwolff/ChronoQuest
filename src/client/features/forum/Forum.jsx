@@ -1,5 +1,6 @@
 import { useGetAllPostsQuery, useCreatePostMutation } from "./postsSlice";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const PostCard = ({ post }) => {
   return (
@@ -13,6 +14,8 @@ export const PostCard = ({ post }) => {
               Posted on: {post.createdAt}
               <br />
               {post.postContent}
+              <br />
+              <Link to={`/post/${post.id}`}> View </Link>
             </p>
           </li>
         </section>
@@ -57,7 +60,7 @@ export const PostForm = () => {
 
 export default function Forum() {
   const { data: posts, isLoading } = useGetAllPostsQuery();
- 
+
   const [filteredPost, setFilteredPost] = useState("");
   const filteredPosts = posts?.filter((p) => (p.title.toLowerCase().includes(filteredPost.toLowerCase())));
 
@@ -82,8 +85,8 @@ export default function Forum() {
           <ul className="post-container">
             {posts?.map((post, index) => (
               index >= (posts.length - 30) && (
-              <PostCard key={post.id} post={post} />
-            )))}
+                <PostCard key={post.id} post={post} />
+              )))}
           </ul>
         )}
       </div>
