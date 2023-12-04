@@ -5,7 +5,7 @@ const router = require("express").Router();
 module.exports = router;
 
 // GETs all game posts made by logged-in user
-router.get("/", async (req, res, next) => {
+router.get("/games", async (req, res, next) => {
   try {
     const games = await prisma.game.findMany({
       where: { userId: res.locals.user.id },
@@ -22,6 +22,26 @@ router.get("/", async (req, res, next) => {
     next(err);
   }
 });
+
+// GETs all forum posts made by logged-in user
+router.get("/forum", async (req, res, next) => {
+  try {
+    const posts = await prisma.post.findMany({
+      where: { userId: res.locals.user.id },
+    });
+    const user = await prisma.user.findUnique({
+      where: {id: res.locals.user.id},
+    });
+    const responseData = {
+      posts: posts,
+      username: user.username,
+    };
+    res.json(responseData);
+  } catch (err) {
+    next(err);
+  }
+});
+
 
 // POSTs new game while logged in as current user
 router.post("/", async (req, res, next) => {
