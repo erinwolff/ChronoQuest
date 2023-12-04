@@ -1,6 +1,8 @@
 import { useGetAllPostsQuery, useCreatePostMutation } from "./postsSlice";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectToken } from "../auth/authSlice";
 
 export const PostCard = ({ post }) => {
   const formattedDate = new Date(post.createdAt).toLocaleString();
@@ -8,15 +10,15 @@ export const PostCard = ({ post }) => {
   return (
     <>
       <div className="post-text">
-        
-          <h3>{post.title}</h3>
-          <br />
-          <h4>Date posted: {formattedDate}</h4>
-          <br />
-          <p>{post.postContent}</p>
-          <br />
-          <Link className="view-link" to={`/post/${post.id}`}> View </Link>
-        
+
+        <h3>{post.title}</h3>
+        <br />
+        <h4>Date posted: {formattedDate}</h4>
+        <br />
+        <p>{post.postContent}</p>
+        <br />
+        <Link className="view-link" to={`/post/${post.id}`}> View </Link>
+
       </div>
     </>
   )
@@ -36,9 +38,9 @@ export const PostForm = () => {
   };
 
   return (
-    <>    
+    <>
       <form className="add-post-form" onSubmit={handleSubmit}>
-      <h3>What's on your mind?</h3>
+        <h3>What's on your mind?</h3>
         <input required
           type="text"
           placeholder="Title"
@@ -62,35 +64,68 @@ export default function Forum() {
 
   const [filteredPost, setFilteredPost] = useState("");
   const filteredPosts = posts?.filter((p) => (p.title.toLowerCase().includes(filteredPost.toLowerCase()) || p.postContent.toLowerCase().includes(filteredPost.toLowerCase())));
+  const token = useSelector(selectToken);
 
+  if (!token) {
+    return isLoading ? (
+      <p>Loading...</p>
+    ) : (posts && (
+      <>
+        <div className="search-bar">
+          <input type="text" value={filteredPost} onChange={(e) => setFilteredPost(e.target.value)} placeholder="Search Posts" />
+        </div>
+        <div>
 
-  return (
-    <>
-      <div className="search-bar">
-        <input type="text" value={filteredPost} onChange={(e) => setFilteredPost(e.target.value)} placeholder="Search Posts" />
-      </div>
-      <div>
-        
-        {isLoading && <p>Loading posts...</p>}
-        {filteredPost ? (
-          <ul className="search">
-            {
-              filteredPosts?.map((post) => (
-                <PostCard key={post.id} post={post} />
-              ))
-            }
-          </ul>
-        ) : (
-          <div className="forum-container">
-            <PostForm />
-            {posts?.map((post, index) => (
-              index >= (posts.length - 20) && (
-                <PostCard key={post.id} post={post} />
-              )))}
-          </div>
-        )}
-      </div>
-    </>
-  );
+          {isLoading && <p>Loading posts...</p>}
+          {filteredPost ? (
+            <ul className="search">
+              {
+                filteredPosts?.map((post) => (
+                  <PostCard key={post.id} post={post} />
+                ))
+              }
+            </ul>
+          ) : (
+            <div className="forum-container">
+              {posts?.map((post, index) => (
+                index >= (posts.length - 20) && (
+                  <PostCard key={post.id} post={post} />
+                )))}
+            </div>
+          )}
+        </div>
+      </>
+    ))
+  } else {
+    return isLoading ? (
+      <p>Loading...</p>
+    ) : (posts && (
+      <>
+        <div className="search-bar">
+          <input type="text" value={filteredPost} onChange={(e) => setFilteredPost(e.target.value)} placeholder="Search Posts" />
+        </div>
+        <div>
+          {isLoading && <p>Loading posts...</p>}
+          {filteredPost ? (
+            <ul className="search">
+              {
+                filteredPosts?.map((post) => (
+                  <PostCard key={post.id} post={post} />
+                ))
+              }
+            </ul>
+          ) : (
+            <div className="forum-container">
+              <PostForm />
+              {posts?.map((post, index) => (
+                index >= (posts.length - 20) && (
+                  <PostCard key={post.id} post={post} />
+                )))}
+            </div>
+          )}
+        </div>
+      </>
+    ));
+  }
 }
 
