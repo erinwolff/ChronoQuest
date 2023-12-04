@@ -69,13 +69,15 @@ export default function AuthForm() {
       </form>
       <a onClick={() => setIsLogin(!isLogin)}>{altCopy}</a>
       <br />
-      <h5>What is included in a membership?</h5>
+      <h5>Join the community:</h5>
       <h6>
-        Share your playtime data with the world.
+        Showcase your playtime stats for the world to see.
         <br />
         Write reviews for those games you love (or hate).
         <br />
-        All at no cost &#128516;
+        Kickstart conversations on the forum & connect with fellow gamers.
+        <br />
+        🎮 Best of all, it's completely free! 🎮
       </h6>
 
       {(loginLoading || registerLoading) && <p>Please wait...</p>}
