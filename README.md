@@ -15,19 +15,49 @@ Authentication is handled with [JWT](https://github.com/auth0/node-jsonwebtoken)
 
 ```dbml
 Table User {
-  id        Serial  [pk]
-  username  String
-  password  String
+  id       Serial [pk]
+  username String @unique
+  password String
+  games    Game[]
+  posts    Post[]
+  comments Comment[]
 }
 
-Table Task {
-  id          Serial  [pk]
-  description String
-  done        Boolean
+Table Game {
+  id          Serial [pk]
+  title       String
+  time        String
   userId      Int
+  imageUrl    String
+  review      String
+  user        User    
 }
 
-Ref: User.id < Task.userId
+model Post {
+id          Serial [pk]
+title       String
+createdAt   DateTime @default(now())
+userId      Int
+postContent String
+user        User    
+comments    Comment[]
+}
+
+model Comment {
+id          Serial [pk]
+comment     String
+createdAt   DateTime @default(now())
+postId      Int
+userId      Int
+post        Post    
+user        User    
+}
+
+
+Ref: User.id < Game.userId
+Ref: User.id < Post.userId
+Ref: User.id < Comment.userId
+Ref: Post.id < Comment.postId
 ```
 
 </details>
