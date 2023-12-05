@@ -6,6 +6,8 @@ import store from "../src/client/store"
 import Home from "../src/client/features/games/Home"
 import Details from "../src/client/features/games/Details"
 import Profile from "../src/client/features/games/Profile"
+import Forum from "../src/client/features/forum/Forum"
+import PostDetails from "../src/client/features/forum/PostDetails"
 
 describe('<Home>', () => {
   test('renders Home component', () => {
@@ -34,6 +36,28 @@ describe('<Profile>', () => {
     render(
       <Provider store={store}>
         <Profile />
+      </Provider>
+    );
+  });
+});
+
+describe('<Forum>', () => {
+  test('renders Forum component', () => {
+    render(
+      <Provider store={store}>
+        <Forum />
+      </Provider>
+    );
+  });
+});
+
+describe('<PostDetails>', () => {
+  test('renders PostDetails component', () => {
+    render(
+      <Provider store={store}>
+        <Router>
+          <PostDetails />
+        </Router>
       </Provider>
     );
   });
