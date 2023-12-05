@@ -13,7 +13,7 @@ export const GameCard = ({ game }) => {
               {game.title}
               <br />
               <br />
-              <img className="game-image" src={game.imageUrl} />
+              <img className="game-image" alt="image of game provided by user" src={game.imageUrl} />
               <br />
               {game.time}
               <br />
