@@ -73,3 +73,17 @@ Application state is managed with [Redux Toolkit](https://redux-toolkit.js.org/)
 [RTK Query](https://redux-toolkit.js.org/rtk-query/overview) is used to handle data fetching. The central API slice is defined in `src/client/store/api.js` and is intended to stay empty. Additional endpoints should be injected separately in `src/client/features`.
 
 [Less](https://lesscss.org/) is used as the CSS preprocessor.
+
+
+
+
+<details>
+<summary>Expand to see credits</summary>
+Source for button styling from: https://getcssscan.com/css-buttons-examples <br>
+Navbar icons sourced from: <br>
+https://www.flaticon.com/free-icons/conversation <br>
+https://www.flaticon.com/free-icons/house <br>
+https://www.flaticon.com/free-icons/login <br>
+https://www.flaticon.com/free-icons/user <br>
+Autocomplete component from Material UI: https://mui.com/material-ui/react-autocomplete/#free-solo <br>
+</details>
