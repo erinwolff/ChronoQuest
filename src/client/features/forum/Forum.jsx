@@ -15,10 +15,10 @@ export const PostCard = ({ post }) => {
         <br />
         <h4>Date posted: {formattedDate}</h4>
         <br />
+        <Link className="view-link" to={`/post/${post.id}`}> View </Link>
+        <br />
         <p>{post.postContent}</p>
         <br />
-        <Link className="view-link" to={`/post/${post.id}`}> View </Link>
-
       </div>
     </>
   )
