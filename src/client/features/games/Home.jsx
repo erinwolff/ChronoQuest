@@ -46,7 +46,7 @@ export default function Home() {
           <p>Curious about the time commitment for your next game? <br/>
           Delve into the collection for detailed insights 
           <br/>
-          shared by gamers, for gamers! test</p>
+          shared by gamers, for gamers!</p>
         </div>
         {isLoading && <p>Loading games...</p>}
         {filteredGame ? (
