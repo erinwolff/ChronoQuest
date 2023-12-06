@@ -12,7 +12,7 @@
     "start": "node src/server",
     "deploy": "prisma migrate deploy",
     "test": "jest",
-    "predeploy": "npm ci && prisma db seed"
+    "predeploy": "prisma migrate deploy && prisma db seed"
   },
   "prisma": {
     "schema": "src/server/prisma/schema.prisma",
