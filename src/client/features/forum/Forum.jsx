@@ -89,7 +89,7 @@ export default function Forum() {
               <h2>Recent Community Posts</h2>
               <br />
               {posts?.map((post, index) => (
-                index >= (posts.length - 10) && (
+                index >= (posts.length - 15) && (
                   <PostCard key={post.id} post={post} />
                 )))}
             </div>
