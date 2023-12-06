@@ -10,8 +10,9 @@
     "dev": "nodemon src/server/index.js",
     "build": "vite build",
     "start": "node src/server",
-    "deploy": "prisma migrate deploy && prisma db seed",
-    "test": "jest"
+    "deploy": "prisma migrate deploy",
+    "test": "jest",
+    "predeploy": "npm ci && prisma db seed"
   },
   "prisma": {
     "schema": "src/server/prisma/schema.prisma",
