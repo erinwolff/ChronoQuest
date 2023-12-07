@@ -1,34 +1,8 @@
-import { useGetPostByIdQuery, useCreateCommentMutation, useDeletePostMutation, useDeleteCommentMutation } from "./postsSlice";
+import { useGetPostByIdQuery, useDeletePostMutation, useDeleteCommentMutation } from "./postsSlice";
 import { useParams, useNavigate } from "react-router-dom"
 import { selectToken } from "../auth/authSlice"
 import { useSelector } from "react-redux";
-import { useState } from "react";
-
-export const CommentForm = ({ id }) => {
-  const [postComment, setPostComment] = useState("");
-  const [newComment] = useCreateCommentMutation();
-
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await newComment({ id, postComment });
-    setPostComment("");
-  };
-
-  return (
-    <>
-      <form className="add-post-form" onSubmit={handleSubmit}>
-        <textarea required
-          type="text"
-          placeholder="Comment"
-          value={postComment}
-          onChange={(e) => setPostComment(e.target.value)}
-        />
-        <button className="small-button-53" role="button">SUBMIT</button>
-      </form>
-    </>
-  )
-}
+import CommentForm from "./CommentForm";
 
 export default function PostDetails() {
   const { id } = useParams();
