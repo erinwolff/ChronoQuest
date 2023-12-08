@@ -73,7 +73,7 @@ export default function Profile() {
   // Checks whether a user is logged in. If not logged in, they are prompted to login. 
   // Otherwise, user game sees unfiltered Profile view, or use search bar to filter through their games.
   if (!token) {
-    return <p>You must be logged in to view your profile.</p>
+    return <p className="text-card">You must be logged in to view your profile.</p>
   } else {
     return (
       <>
