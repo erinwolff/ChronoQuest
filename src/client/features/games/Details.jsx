@@ -33,56 +33,57 @@ export default function Details() {
     }
   }
 
+  const noTokenDetailsContainer = (<>
+    <main className="game-details">
+      <h3>{game.title}</h3>
+      <h4>Posted by: {username}</h4>
+      <br />
+      <img className="details-game-image" alt="image of game provided by user" src={game.imageUrl} />
+      <br />
+      <h4>{username}'s Playtime:</h4>
+      <br />
+      {playtime}
+      <br />
+      <br />
+      <h4>{username}'s Review:</h4>
+      <br />
+      {review}
+      <br />
+      <br />
+    </main>
+  </>)
+
+  const tokenDetailsContainer = (<>
+    <main className="game-details">
+      <h3>{game.title}</h3>
+      <h4>Posted by: {username}</h4>
+      <br />
+      <img className="details-game-image" src={game.imageUrl} />
+      <br />
+      <h4>{username}'s Playtime:</h4>
+      <br />
+      {playtime}
+      <br />
+      <br />
+      <h4>{username}'s Review:</h4>
+      <br />
+      {review}
+      <br />
+      <br />
+      <button className="small-button-53 delete-right" role="button" onClick={handleDelete}>DELETE</button>
+    </main>
+  </>)
+
+
   // checks to see if user is logged in. If not logged in, won't be able to see delete button.
   if (!token) {
     return isLoading ? (
       <p>Loading...</p>
-    ) : (game && (
-      <>
-        <main className="game-details">
-          <h3>{game.title}</h3>
-          <h4>Posted by: {username}</h4>
-          <br />
-          <img className="details-game-image" alt="image of game provided by user" src={game.imageUrl} />
-          <br />
-          <h4>{username}'s Playtime:</h4>
-          <br />
-          {playtime}
-          <br />
-          <br />
-          <h4>{username}'s Review:</h4>
-          <br />
-          {review}
-          <br />
-          <br />
-        </main>
-      </>
-    ))
+    ) : (game && (noTokenDetailsContainer))
   } else {
     return isLoading ? (
       <p>Loading...</p>
-    ) : (game && (
-      <>
-        <main className="game-details">
-          <h3>{game.title}</h3>
-          <h4>Posted by: {username}</h4>
-          <br />
-          <img className="details-game-image" src={game.imageUrl} />
-          <br />
-          <h4>{username}'s Playtime:</h4>
-          <br />
-          {playtime}
-          <br />
-          <br />
-          <h4>{username}'s Review:</h4>
-          <br />
-          {review}
-          <br />
-          <br />
-          <button className="small-button-53 delete-right" role="button" onClick={handleDelete}>DELETE</button>
-        </main>
-      </>
-    ))
+    ) : (game && (tokenDetailsContainer))
   }
 }
 
