@@ -18,7 +18,60 @@ export default function Profile() {
   const [filteredGame, setFilteredGame] = useState("");
   const filteredGames = games?.filter((g) => (g.title.toLowerCase().includes(filteredGame.toLowerCase()) || g.time.toLowerCase().includes(filteredGame.toLowerCase())));
 
+  const filteredGameView = (<div className="profile">
+    <div className="text-card">
+      <h1 className="profile-header">Welcome home, {username} 🎮</h1>
+      <br />
+      <h4>Finished a game?</h4>
+      <br />
+      <h4>Search for the game title. Don't see it? Add a new one.</h4>
+      <br />
+      <GameForm />
+      <h4>{username}'s Forum Posts</h4>
+      {posts?.posts.map((post) => (
+        <PostsCard key={post.id} post={post} />
+      ))}
+    </div>
+    <ul className="search">{
+      filteredGames?.map((game) => (
+        <GameCard key={game.id} game={game} />
+      ))
+    }
+    </ul>
+    <br />
+    <br />
+  </div>)
 
+  const unfilteredProfileView = (<div className="profile">
+    <div className="text-card">
+      <h1 className="profile-header">Welcome home, {username} 🎮</h1 >
+      <br />
+      <h4>Finished a game?</h4>
+      <br />
+      <h6>Search for the game title. Don't see it? Add a new one.</h6>
+      <br />
+      <GameForm />
+      <h4>{username}'s Forum Posts</h4>
+      {
+        posts && posts.posts && posts.posts.length > 0 ? (
+          posts.posts.map((post) => <PostsCard key={post.id} post={post} />)
+        ) : (
+          <p>You haven't posted yet. Write one <Link to={'/forum'}> here</Link>!</p>
+        )
+      }
+    </div >
+    <ul className="gamecard-container">
+      {games?.map((game) => (
+        <GameCard key={game.id} game={game} />
+      ))}
+    </ul>
+    <br />
+    <br />
+  </div >)
+
+
+  // Checks whether a user is logged in. If not logged in, they are prompted to login. 
+  // Otherwise, user game sees unfiltered Profile view, or use search bar to filter through their games.
   if (!token) {
     return <p>You must be logged in to view your profile.</p>
   } else {
@@ -28,56 +81,7 @@ export default function Profile() {
           <input type="text" value={filteredGame} onChange={(e) => setFilteredGame(e.target.value)} placeholder="Search your games" />
         </div>
         {isLoading && <p>Loading games...</p>}
-        {filteredGame ? (
-          <div className="profile">
-            <div className="text-card">
-              <h1 className="profile-header">Welcome home, {username} 🎮</h1>
-              <br />
-              <h4>Finished a game?</h4>
-              <br />
-              <h4>Search for the game title. Don't see it? Add a new one.</h4>
-              <br />
-              <GameForm />
-              <h4>{username}'s Forum Posts</h4>
-              {posts?.posts.map((post) => (
-                <PostsCard key={post.id} post={post} />
-              ))}
-            </div>
-            <ul className="search">{
-              filteredGames?.map((game) => (
-                <GameCard key={game.id} game={game} />
-              ))
-            }
-            </ul>
-            <br />
-            <br />
-          </div>
-        ) : (
-          <div className="profile">
-            <div className="text-card">
-              <h1 className="profile-header">Welcome home, {username} 🎮</h1>
-              <br />
-              <h4>Finished a game?</h4>
-              <br />
-              <h6>Search for the game title. Don't see it? Add a new one.</h6>
-              <br />
-              <GameForm />
-              <h4>{username}'s Forum Posts</h4>
-              {posts && posts.posts && posts.posts.length > 0 ? (
-                posts.posts.map((post) => <PostsCard key={post.id} post={post} />)
-              ) : (
-                <p>You haven't posted yet. Write one <Link to={'/forum'}> here</Link>!</p>
-              )}
-            </div>
-            <ul className="gamecard-container">
-              {games?.map((game) => (
-                <GameCard key={game.id} game={game} />
-              ))}
-            </ul>
-            <br />
-            <br />
-          </div>
-        )}
+        {filteredGame ? (filteredGameView) : (unfilteredProfileView)}
       </>
     );
   }
