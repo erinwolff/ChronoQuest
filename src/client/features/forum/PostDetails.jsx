@@ -54,8 +54,7 @@ export default function PostDetails() {
       console.error("Error deleting post:", err);
     }
   }
-
-
+  
   const noTokenPostDetailsContainer = (<>
     <main className="post-details">
       <h3>{postTitle}</h3>
