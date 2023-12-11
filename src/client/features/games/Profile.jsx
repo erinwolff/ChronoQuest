@@ -28,9 +28,13 @@ export default function Profile() {
       <br />
       <GameForm />
       <h4>{username}'s Forum Posts</h4>
-      {posts?.posts.map((post) => (
-        <PostsCard key={post.id} post={post} />
-      ))}
+      {
+        posts && posts.posts && posts.posts.length > 0 ? (
+          posts.posts.map((post) => <PostsCard key={post.id} post={post} />)
+        ) : (
+          <p>You haven't posted yet. Write one <Link to={'/forum'}> here</Link>!</p>
+        )
+      }
     </div>
     <ul className="search">{
       filteredGames?.map((game) => (
