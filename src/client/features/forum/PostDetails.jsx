@@ -10,7 +10,7 @@ export default function PostDetails() {
   const postTitle = data?.title || "";
   const username = data?.user.username || "";
   const postContent = data?.postContent || "";
-  const postComments = data?.comments || "";
+  const postComments = data?.comments || [];
   const formattedDate = new Date(data?.createdAt).toLocaleString();
 
   // Handle delete post function
