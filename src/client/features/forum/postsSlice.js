@@ -19,10 +19,10 @@ const postsApi = api.injectEndpoints({
       invalidatesTags: ["Forum", "Profile"],
     }),
     createComment: builder.mutation({
-      query: ({id, postComment}) => ({
+      query: ({ id, postComment }) => ({
         url: `/post/${id}`,
         method: "POST",
-        body: {id, postComment},
+        body: { id, postComment },
       }),
       invalidatesTags: ["Forum", "Post"],
     }),
@@ -45,8 +45,9 @@ const postsApi = api.injectEndpoints({
       }),
       invalidatesTags: ["Forum", "Post"],
     }),
-  }),
+  })
 });
+
 
 export const {
   useGetAllPostsQuery,
