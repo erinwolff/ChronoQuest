@@ -1,3 +1,10 @@
+## ChronoQuest
+
+### Purpose
+The purpose of the project is to create a centralized place for users to share and view information about video games. ChronoQuest allows users to create an account and, once logged in, create new game posts by either searching for an already-posted game title, or creating a new title post. They can share reviews as well as the time it took for them to complete the game.
+
+In addition, the forum exists for those who wish to connect with the community as a whole. Users can create new forum posts as well as comment on those that have been posted by others. 
+
 ## Architecture
 
 ### Backend
