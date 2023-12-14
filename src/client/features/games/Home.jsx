@@ -1,6 +1,7 @@
 import { useGetAllGamesQuery } from "./gameSlice";
 import GameCard from "./GameCard";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const { data: games, isLoading } = useGetAllGamesQuery();
@@ -32,11 +33,15 @@ export default function Home() {
 
       <div className="games">
         <div className="text-card">
+          <br/>
           <h5>Beat the Eternal Quest of Time</h5>
           <p>Curious about the time commitment for your next game? <br />
             Delve into the collection for detailed insights
             <br />
-            shared by gamers, for gamers!</p>
+            by gamers, for gamers!</p>
+            <br/>
+            <h3>👾 Share a game and join the fun! 👾<br/></h3>
+            Login <Link to={`/login`}> here</Link> to get started.<br/><br/>
         </div>
         {isLoading && <p>Loading games...</p>}
         {filteredGame ? (filteredGameContainer) : (gameCardContainer)}

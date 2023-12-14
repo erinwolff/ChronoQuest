@@ -42,7 +42,7 @@ export const GameForm = () => {
             )}
           />
         )}
-        <h6>How long did it take to finish the game?</h6>
+        <h6>How long did it take to finish?</h6>
         <input required
           type="text"
           placeholder="Example: 40 hours"
