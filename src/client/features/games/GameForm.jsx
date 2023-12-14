@@ -7,16 +7,17 @@ import { useCreateGameMutation, useGetAllGamesQuery } from "./gameSlice";
 export const GameForm = () => {
   const [autocompleteValue, setAutocompleteValue] = useState("");
   const [gameTime, setGameTime] = useState("");
-  const [gameImage, setGameImage] = useState("https://i2.wp.com/www.puntogeek.com/wp-content/uploads/2007/12/space-invaders.jpg");
+  const [gameImage, setGameImage] = useState("");
   const [gameReview, setGameReview] = useState("");
   const [newGame] = useCreateGameMutation();
   const { data: games, isLoading } = useGetAllGamesQuery();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await newGame({ gameTitle: autocompleteValue, gameTime, gameImage, gameReview });
+    const defaultImage = gameImage === "" ? "https://i2.wp.com/www.puntogeek.com/wp-content/uploads/2007/12/space-invaders.jpg" : gameImage;
+    await newGame({ gameTitle: autocompleteValue, gameTime, gameImage: defaultImage, gameReview });
     setGameTime("");
-    setGameImage("https://i2.wp.com/www.puntogeek.com/wp-content/uploads/2007/12/space-invaders.jpg");
+    setGameImage("");
     setGameReview("");
     setAutocompleteValue("");
   };
@@ -49,15 +50,17 @@ export const GameForm = () => {
           value={gameTime}
           onChange={(e) => setGameTime(e.target.value)}
         />
-        <h6>Share an image URL below ~<br/>* If you have your own image, delete this link! *</h6>
+        <h6>Share an image ~</h6>
         <input
           type="text"
+          placeholder="Image URL"
           value={gameImage}
           onChange={(e) => setGameImage(e.target.value)}
         />
+        <h6>What'd you think?</h6>
         <textarea
           type="text"
-          placeholder="Review"
+          placeholder="Spill the beans here"
           value={gameReview}
           onChange={(e) => setGameReview(e.target.value)}
         />
