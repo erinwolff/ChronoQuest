@@ -3,10 +3,11 @@ import Autocomplete from "@mui/material/Autocomplete"
 import { useState } from "react";
 import { useCreateGameMutation, useGetAllGamesQuery } from "./gameSlice";
 
+
 export const GameForm = () => {
   const [autocompleteValue, setAutocompleteValue] = useState("");
   const [gameTime, setGameTime] = useState("");
-  const [gameImage, setGameImage] = useState("");
+  const [gameImage, setGameImage] = useState("https://i2.wp.com/www.puntogeek.com/wp-content/uploads/2007/12/space-invaders.jpg");
   const [gameReview, setGameReview] = useState("");
   const [newGame] = useCreateGameMutation();
   const { data: games, isLoading } = useGetAllGamesQuery();
@@ -15,7 +16,7 @@ export const GameForm = () => {
     e.preventDefault();
     await newGame({ gameTitle: autocompleteValue, gameTime, gameImage, gameReview });
     setGameTime("");
-    setGameImage("");
+    setGameImage("https://i2.wp.com/www.puntogeek.com/wp-content/uploads/2007/12/space-invaders.jpg");
     setGameReview("");
     setAutocompleteValue("");
   };
@@ -51,7 +52,7 @@ export const GameForm = () => {
         <h6>Share an image URL below ~<br/>* If you have your own image, delete this link! *</h6>
         <input
           type="text"
-          value={gameImage || "https://rb.gy/b10dbb"}
+          value={gameImage}
           onChange={(e) => setGameImage(e.target.value)}
         />
         <textarea
