@@ -1,7 +1,7 @@
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete"
 import { useState } from "react";
-import {useCreateGameMutation, useGetAllGamesQuery } from "./gameSlice";
+import { useCreateGameMutation, useGetAllGamesQuery } from "./gameSlice";
 
 export const GameForm = () => {
   const [autocompleteValue, setAutocompleteValue] = useState("");
@@ -41,16 +41,17 @@ export const GameForm = () => {
             )}
           />
         )}
+        <h6>How long did it take to finish the game?</h6>
         <input required
           type="text"
-          placeholder="Time to beat"
+          placeholder="Example: 40 hours"
           value={gameTime}
           onChange={(e) => setGameTime(e.target.value)}
         />
+        <h6>Share an image URL below ~<br/>* If you have your own image, delete this link! *</h6>
         <input
           type="text"
-          placeholder="Image URL"
-          value={gameImage}
+          value={gameImage || "https://rb.gy/b10dbb"}
           onChange={(e) => setGameImage(e.target.value)}
         />
         <textarea
