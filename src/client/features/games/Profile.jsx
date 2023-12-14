@@ -32,7 +32,9 @@ export default function Profile() {
         posts && posts.posts && posts.posts.length > 0 ? (
           posts.posts.map((post) => <PostsCard key={post.id} post={post} />)
         ) : (
-          <p>You haven't posted yet. Write one <Link to={'/forum'}> here</Link>!</p>
+          <>
+            <p>You haven't posted yet. !!!!Write one <Link to={'/forum'}> here</Link>!</p>
+          </>
         )
       }
     </div>
@@ -60,7 +62,7 @@ export default function Profile() {
         posts && posts.posts && posts.posts.length > 0 ? (
           posts.posts.map((post) => <PostsCard key={post.id} post={post} />)
         ) : (
-          <p>You haven't posted yet. Write one <Link to={'/forum'}> here</Link>!</p>
+          <p><br/>You haven't posted yet. Write one <Link to={'/forum'}> here</Link>!<br/><br/></p>
         )
       }
     </div >
