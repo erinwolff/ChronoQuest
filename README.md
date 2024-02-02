@@ -1,4 +1,6 @@
 ## ChronoQuest
+![image](https://github.com/erinwolff/ChronoQuest/assets/57080166/522c2456-cd2e-4db6-9fea-02401f50ec8d)
+
 
 ### Purpose
 The purpose of the project is to create a centralized place for users to share and view information about video games. ChronoQuest allows users to create an account and, once logged in, create new game posts by either searching for an already-posted game title, or creating a new title post. They can share reviews as well as the time it took for them to complete the game.
