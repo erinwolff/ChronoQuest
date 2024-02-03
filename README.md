@@ -11,7 +11,7 @@ In addition, the forum exists for those who wish to connect with the community a
 
 ### Backend
 
-The backend consists of an [Express](https://expressjs.com/) server with a SQLite database and [Prisma](https://www.prisma.io/) as the ORM. The entrypoint is `src/server/index.js`.
+The backend consists of an [Express](https://expressjs.com/) server with a Postgres database and [Prisma](https://www.prisma.io/) as the ORM. The entrypoint is `src/server/index.js`.
 
 API routes can be found in `src/server/api/`.
 
