@@ -41,7 +41,10 @@ const createApp = async () => {
   app.use("/api/post", require("./api/postDetails"));
 
   // /api/post/:id/comments
-  app.use("/api/post/:id/comments", require("./api/postDetails"))
+  app.use("/api/post/:id/comments", require("./api/postDetails"));
+
+  // /api/passwordReset
+  app.use('/api/auth', require("./api/auth/passwordReset"));
 
 
   // Serve static HTML in production & Vite dev server in development
