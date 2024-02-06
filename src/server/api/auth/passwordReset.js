@@ -16,18 +16,23 @@ const getUserById = async (userId) => {
 };
 
 // Configure the transport mechanism (SMTP settings)
-async function sendResetEmail(emailAddress, resetToken, userName) {  
+async function sendResetEmail(emailAddress, resetToken, userName) {   
   const transporter = nodemailer.createTransport({
-    service: 'gmail', // or any other email service
+    host: process.env.SMTP_HOST, // SMTP host from Mailjet
+    port: process.env.SMTP_PORT, // SMTP port from Mailjet
+    secure: true,
     auth: {
-      user: process.env.EMAIL, // your email address
-      pass: process.env.PASS // your email password
+      user: process.env.SMTP_USERNAME, // your Mailjet SMTP authorized email
+      pass: process.env.SMTP_PASSWORD, // your Mailjet SMTP password
+    },
+    tls: {
+      rejectUnauthorized: true 
     }
   });
 
   // Set up the email options
   const mailOptions = {
-    from: process.env.EMAIL,
+    from: process.env.MAILJET_SENDER_EMAIL, // Your Mailjet sender email
     to: emailAddress,
     subject: 'Password Reset Request',
     text: `Hello ${userName},\n\nPlease see your requested password reset token below and proceed to https://chronoquest-r0i2.onrender.com/login to complete the reset process.\n\nIf you did not request a password reset, please disregard this message.\n\nYour reset token is:\n\n${resetToken}\n\nBest regards,\nThe ChronoQuest Team`
