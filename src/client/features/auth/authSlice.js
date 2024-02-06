@@ -22,10 +22,24 @@ const authApi = api.injectEndpoints({
       transformErrorResponse: (response) => response.data,
       invalidatesTags: ["Games", "Profile"],
     }),
+    initiatePasswordReset: builder.mutation({
+      query: (username) => ({
+        url: '/auth/request-password-reset',
+        method: 'POST',
+        body: { username },
+      }),
+    }),
+    completePasswordReset: builder.mutation({
+      query: ({ token, password }) => ({
+        url: '/auth/reset-password',
+        method: 'POST',
+        body: { token, password },
+      }),
+    }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation } = authApi;
+export const { useRegisterMutation, useLoginMutation, useInitiatePasswordResetMutation, useCompletePasswordResetMutation } = authApi;
 
 /** Session storage key for auth token */
 const TOKEN_KEY = "token";
