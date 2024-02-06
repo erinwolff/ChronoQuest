@@ -174,7 +174,7 @@ export default function AuthForm() {
               />
             </label>
             <br />
-            <button className="small-button-53" role="button" disabled={resetCompleteLoading}>COMPLETE RESET</button>
+            <button className="small-button-53" role="button" disabled={resetCompleteLoading}>SUBMIT</button>
           </form>
         </>
       )}
