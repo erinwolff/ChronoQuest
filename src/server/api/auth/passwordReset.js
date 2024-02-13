@@ -35,7 +35,7 @@ async function sendResetEmail(emailAddress, resetToken, userName) {
     from: process.env.MAILJET_SENDER_EMAIL, // Your Mailjet sender email
     to: emailAddress,
     subject: 'Password Reset Request',
-    text: `Hello ${userName},\n\nPlease see your requested password reset token below and proceed to https://chronoquest-r0i2.onrender.com/login to complete the reset process.\n\nIf you did not request a password reset, please disregard this message.\n\nYour reset token is:\n\n${resetToken}\n\nBest regards,\nThe ChronoQuest Team`
+    text: `Hello ${userName},\n\nPlease see your requested password reset token below.\n\nIf you did not request a password reset, please disregard this message.\n\nYour reset token is:\n\n${resetToken}\n\nBest regards,\nThe ChronoQuest Team`
   };
 
   // Send the email
